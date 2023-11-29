@@ -1,0 +1,180 @@
+:root {
+    --blanco: #E0E0E0;
+    --azul-opacidad: #184463;
+    --bg-menu: #283A51;
+    --amarrillo: #DBF815;
+    --rojo: #E70010;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #E70010;
+}
+
+body {
+
+    height: 100vh;
+    font-family: sans-serif;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+main {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    overflow-y: scroll;
+}
+
+.menu-dashboard {
+    width: 300px;
+    padding: 20px;
+    height: 100vh;
+    background-color: transparent;
+    transition: max-width .3s ease;
+    background-color: var(--bg-menu);
+    color: var(--blanco);
+    align-items: stretch;
+}
+
+.top-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+
+#logo {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.top-menu .logo img {
+    width: 70px;
+    transition: width .3s ease;
+}
+
+.top-menu .logo span {
+    font-size: 25px;
+    color: #DBF815;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-left: 10px;
+}
+
+.menu .enlace {
+    width: 100%;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all .2s ease;
+}
+
+.menu .enlace:hover {
+    background: var(--blanco);
+    color: var(--rojo);
+}
+
+.menu .enlace i {
+    margin-right: 20px;
+    font-size: 30px;
+}
+
+.table {
+    text-align: center;
+}
+
+.table-boxshadow {
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+
+.textarea-custom {
+    resize: none;
+    height: 200px;
+}
+
+.container__nombrepelicula {
+    color: #E70010;
+    font-weight: 600;
+}
+
+.container__textoeliminar {
+    font-size: 2rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+}
+
+.imagePreviewclass {
+    width: 170px;
+    background-color: #283A51;
+    margin-top: 5px;
+    border-radius: 10px;
+    height: 220px;
+}
+
+.imagePreviewclassActor {
+    width: 200px;
+    background-color: #283A51;
+    margin-top: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);
+    height: 200px;
+}
+
+.estadisticasTotal {
+    background-color: #283A51;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.icono-estadistica {
+    font-size: 55px;
+    color: #E0E0E0;
+}
+
+.estadisticasTotal h4 {
+    color: #E0E0E0;
+    font-size: 1.5rem;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.estadisticasTotal span {
+    color: #E0E0E0;
+    font-size: 3rem;
+
+    letter-spacing: 2px;
+}
+
+@media screen and (max-width:700px) {
+    .menu-dashboard {
+        width: 100px;
+    }
+
+    .menu-dashboard span {
+        display: none;
+    }
+
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AdminActoresViewModel>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1 class="p-4 ">Administrar actores</h1>
+    <form class="d-flex pb-1 pt-4 pr-3 pb-4" role="search">
+        <input class="form-control me-2 table-boxshadow p-2" id="Buscador" type="search"
+               placeholder="Buscar actor" aria-label="Search">
+    </form>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pb-4 pt-4 my-4 position-relative">
+        <a href="~/Admin/Actores/Agregar"
+           class="btn btn-success btn btn-success position-absolute top-0 end-0 px-3 me-4">
+            Agregar actor
+        </a>
+    </div>
+    <h3 class="my-4">Listado de actores</h3>
+    <table class="table table-striped  table-boxshadow" id="tabla1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Total peliculas</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+            }
+           @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@a.Nombre</td>
+                    <td>@a.TotalPeliculas</td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="#Editar" class="btn btn-primary" type="button">Editar</a>
+                            <a href="EliminarPelicula.html" class="btn btn-danger" type="button">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/js/Filtrar.js"></script>
+<script>
+    const tabla1 = document.querySelector("#tabla1");
+    document.querySelector("#Buscador").addEventListener("input", function () {
+        tabla1.filter(this.value);
+    });
+</script>
+

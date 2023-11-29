@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1 class="my-4">Agregar actor</h1>
+    <form>
+        <div class="row g-2 mb-4 mt-4">
+            <div class="form-floating col-sm-12 col-md-6">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Título de la pelicula"
+                       required>
+                <label class="px-4" for="floatingInput">Nombre del actor</label>
+            </div>
+            <div class="form-floating col-sm-12 col-md-6">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Director de la pelicula"
+                       required>
+                <label for="floatingInput" class="px-4">Lugar de nacimineto</label>
+            </div>
+            <div class="form-floating col-sm-12 col-md-12 mt-4">
+                <input type="date" class="form-control" id="floatingInput" placeholder="Fecha de nacimiento"
+                       required>
+                <label class="px-4" for="floatingInput">Fecha de nacimiento</label>
+            </div>
+            <div class="form-floating my-4">
+                <textarea style="height: 150px" class="form-control textarea-custom"
+                          placeholder="Biografía del actor" required></textarea>
+                <label for="floatingTextarea">Biografía del actor</label>
+            </div>
+
+            <div class="form-floating mb-1">
+                <input type="file" id="fileUpload1" accept="image/jpg" class="form-control table-boxshadow "
+                       placeholder="Imagen del actor">
+                <label>Dirección (URL) de la imagen del actor</label>
+            </div>
+            <div class="col">
+                @* class="imagePreviewclassActor" *@
+                <img id="imagePreview" style="width:200px; border-radius:50%; height:200px; box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);" src="~/Imagenes/Actores/0.jpg" />
+            </div>
+
+            <p class="pb-2" id="Errores"></p>
+
+            <div class="row d-flex justify-content-center align-items-center">
+                <input type="submit" class="btn btn-success btn-lg mt-4 ms-4 col-sm-5 col-md-2 col-lg-2"
+                       value="Agregar" />
+                <a href="IndexActor.html"
+                   class="btn col-sm-5 btn-danger btn-lg col-md-2 col-lg-2 mt-4 ms-3">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function mostrarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('imagePreview').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.getElementById('fileUpload1').addEventListener('change', function () {
+        mostrarImagen(this);
+    });
+</script>

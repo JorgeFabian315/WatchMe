@@ -1,0 +1,121 @@
+﻿@model AdminPeliculasAgregarViewModel
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="container">
+    <h1 class="mt-4 mb-3 pb-3 px-4">Editar pelicula</h1>
+    <form action="~/Admin/Peliculas/Editar" method="post" class="mb-3 pb-4" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Pelicula.Id" />
+        <div class="row g-2 mb-4">
+            <div class="form-floating col-md-6">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Título de la pelicula"
+                       asp-for="Pelicula.Titulo" required>
+                <label for="floatingInput">Título de la pelicula</label>
+            </div>
+            <div class="form-floating col-md-6">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Director de la pelicula"
+                       asp-for="Pelicula.Director" required>
+                <label for="floatingInput">Director de la pelicula</label>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Pelicula.Duracion" type="text" class="form-control" placeholder="Duración de la pelicula: HH:MM" required>
+            <label for="floatingInput">Duración de la pelicula: HH:MM</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Pelicula.FechaLanzamiento" type="date" class="form-control" placeholder="Dirección (URL) de la pelicula" required>
+            <label for="floatingInput">Fecha de lanzamiento</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" asp-for="Pelicula.UrlTrailer" placeholder="Dirección (URL) de la pelicula" required>
+            <label for="floatingInput">Dirección (URL) del trailer de la pelicula (YouTube)</label>
+        </div>
+
+        <div class="row g-2 mb-4">
+            <div class="form-floating mt-3 col-sm-12 col-md-6 col-lg-12">
+                <select class="form-select" id="floatingSelectDisabled"
+                        aria-label="Selecciona una clasificación"
+                        asp-for="Pelicula.ClasificacionId" asp-items="@(new SelectList(Model.Clasificaciones,"Id","Nombre"))">
+                    <option>--Selecciona una--</option>
+                </select>
+                <label for="floatingSelectDisabled">Selecciona una clasificación</label>
+            </div>
+            <div class="form-floating mt-3 col-sm-12 col-md-6 col-lg-12">
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelectDisabled" asp-for="Pelicula.PlataformaId"
+                            asp-items="@(new SelectList(Model.Plataformas,"Id", "Nombre"))" aria-label="Selecciona una plataforma">
+                        <option value="">--Selecciona una--</option>
+                    </select>
+                    <label for="floatingSelectDisabled">Selecciona una plataforma</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating">
+            <textarea style="height: 150px" class="form-control textarea-custom"
+                      asp-for="Pelicula.Sinopsis" placeholder="Sinopsis de la pelicula" required></textarea>
+            <label for="floatingTextarea">Sinopsis de la pelicula</label>
+        </div>
+
+        <div class="form-floating mt-3 col-sm-12 col-md-6 col-lg-12">
+            <select class="form-select" id="floatingSelectDisabled"
+                    aria-label="Selecciona un genero"
+                    asp-for="Pelicula.IdGenero" asp-items="@(new SelectList(Model.Generos,"Id","Nombre"))">
+                <option>--Selecciona una--</option>
+            </select>
+            <label for="floatingSelectDisabled">Selecciona un genero</label>
+        </div>
+
+        <div class="col-md-10 col-lg-10 mt-3 d-flex justify-content-center align-items-center mb-4">
+            <label class="text-start me-4">Actores principales:</label>
+            <select id="selectActores" multiple asp-items="@(new MultiSelectList(Model.Actores,"Id","Nombre", Model.ActoresId))"
+                    asp-for="ActoresId">
+            </select>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="file" id="fileUpload1" accept="image/jpg" class="form-control table-boxshadow"
+                   placeholder="Poster de la pelicula" asp-for="Archivo" />
+            <label>Dirección (URL) del poster de la pelicula</label>
+        </div>
+
+        <img id="imagePreview" class="imagePreviewclass" src="~/Imagenes/Peliculas/@(Model.Pelicula.Id).jpg" />
+
+        <span class="pb-2 pt-2" id="Errores">@Html.ValidationSummary(true)</span>
+
+        <div class="row d-flex justify-content-center align-items-center">
+            <input type="submit" class="btn btn-success btn-lg mt-4 ms-4 col-sm-5 col-md-2 col-lg-2"
+                   value="Guardar">
+            <a href="~/Admin/Peliculas"
+               class="btn col-sm-5 btn-danger btn-lg mt-4 ms-3 col-md-2 col-lg-2">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+<script>
+    new MultiSelectTag('selectActores', {
+        rounded: true,    // default true
+        shadow: true,      // default false
+        placeholder: 'Search',  // default Search...
+        tagColor: {
+            textColor: '#ffff',
+            borderColor: '#92e681',
+            bgColor: '#E70010',
+        }
+    });
+
+    function mostrarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('imagePreview').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.getElementById('fileUpload1').addEventListener('change', function () {
+        mostrarImagen(this);
+    });
+</script>
