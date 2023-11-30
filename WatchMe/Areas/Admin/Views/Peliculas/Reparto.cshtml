@@ -1,0 +1,28 @@
+﻿@model AdminPeliculasRepartoViewModel
+@{
+    ViewData["Title"] = "Reparto";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1 class="my-4 py-2">Agregar reparto</h1>
+    <h3 class="my-4 py-2">Actores de la pelicula <span>@Model.TituloPelicula</span></h3>
+    <form class="px-3">
+        <input type="hidden" asp-for="IdPelicula" />
+        @foreach (var a in Model.Actores)
+        {
+            <div class="row g-2 mb-4 py-2">
+                <div class="form-floating col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" class="form-control" id="floatingInput" required
+                           placeholder="Personaje que interpreto @a.NombreActor:" asp-for="@a.Personaje">
+                    <label class="px-4" for="floatingInput">Personaje que interpreto @a.NombreActor:</label>
+                    <span class="pb-2" id="Errores"></span>
+                </div>
+            </div>
+
+        }
+
+        <input type="submit" class="btn btn-success btn-lg " value="Guardar"></input>
+        <a href="IndexActor.html" class="btn btn-danger btn-lg ms-3">Cancelar</a>
+    </form>
+</div>

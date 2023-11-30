@@ -287,12 +287,6 @@ namespace WatchMe.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-
-
-
-
-
-
             vm.Plataformas = repositoryPlataformas.GetAll().Select(x => new Model
             {
                 Id = x.Id,
@@ -317,8 +311,67 @@ namespace WatchMe.Areas.Admin.Controllers
         }
 
 
+        public IActionResult Reparto(int id)
+        {
 
-        public bool ValidarPelicula(out List<string> errores, AdminPeliculasAgregarViewModel vm)
+            var p = repositoryPeliculas.Get(id);
+
+            if (p == null)
+                return RedirectToAction("Index");
+
+
+            var vm = new AdminPeliculasRepartoViewModel()
+            {
+                IdPelicula= id,
+                TituloPelicula = p.Titulo,
+                Actores = p.Participacion.Select(x => new ParticipacionPeliculaModel
+                {
+                    ActorId = x.IdActor,
+                    NombreActor = x.IdActorNavigation.Nombre,
+                    Personaje = x.Personaje ?? "Desconocido"
+                })
+            };
+
+
+            return View(vm);
+        }
+
+
+        [HttpPost]
+        public IActionResult Reparto(AdminPeliculasRepartoViewModel vm)
+        {
+
+            var peli = repositoryPeliculas.Get(vm.IdPelicula);
+
+            if (peli == null)
+                return RedirectToAction("Index");
+
+
+            //foreach (var p in vm.Actores)
+            //{
+            //    var reparto = new Participacion();
+            //    reparto.IdPelicula
+
+            //}
+
+
+            //repositoryParticipacion.Update();
+
+
+
+
+
+
+
+
+
+
+
+            return View();
+        }
+
+
+            public bool ValidarPelicula(out List<string> errores, AdminPeliculasAgregarViewModel vm)
         {
             errores = new();
 

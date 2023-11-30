@@ -4,8 +4,8 @@
 }
 
 <div class="container">
-    <h1 class="my-4">Agregar actor</h1>
-    <form method="post" action="~/Admin/Actores/Agregar" enctype="multipart/form-data">
+    <h1 class="my-4">Editar actor</h1>
+    <form method="post" action="~/Admin/Actores/Editar" enctype="multipart/form-data">
         <div class="row g-2 mb-4 mt-4">
             <div class="form-floating col-sm-12 col-md-6">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Nombre del actor"
@@ -35,14 +35,14 @@
             </div>
             <div class="col">
                 @* class="imagePreviewclassActor" *@
-                <img id="imagePreview" style="width:200px; border-radius:50%; height:200px; box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);" src="~/Imagenes/Actores/0.jpg" />
+                <img id="imagePreview" style="width:200px; border-radius:50%; height:200px; box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.3);" src="~/Imagenes/Actores/@(Model.Actor.Id).jpg" />
             </div>
 
             <p class="pb-2" id="Errores">@Html.ValidationSummary(true)</p>
 
             <div class="row d-flex justify-content-center align-items-center">
                 <input type="submit" class="btn btn-success btn-lg mt-4 ms-4 col-sm-5 col-md-2 col-lg-2"
-                       value="Agregar" />
+                       value="Guardar" />
                 <a href="~/Admin/Actores"
                    class="btn col-sm-5 btn-danger btn-lg col-md-2 col-lg-2 mt-4 ms-3">Cancelar</a>
             </div>
