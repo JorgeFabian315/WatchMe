@@ -14,6 +14,7 @@ namespace WatchMe.Repositories
             return Context.Pelicula
                 .Include(p => p.IdGeneroNavigation)
                 .Include(x => x.Participacion)
+                    .ThenInclude(x => x.IdActorNavigation)
                 .FirstOrDefault(p => p.Id == (int)id);
         }
         public override IEnumerable<Pelicula> GetAll()
