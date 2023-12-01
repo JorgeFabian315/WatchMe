@@ -272,8 +272,6 @@ namespace WatchMe.Areas.Admin.Controllers
                     
                     repositoryPeliculas.Update(peliculaExiste);
                     
-                    
-
 
                     if(vm.Archivo != null)
                     {
@@ -341,24 +339,17 @@ namespace WatchMe.Areas.Admin.Controllers
         public IActionResult Reparto(AdminPeliculasRepartoViewModel vm)
         {
 
-            var peli = repositoryPeliculas.Get(vm.IdPelicula);
+            //var peli = repositoryPeliculas.Get(vm.IdPelicula);
 
-            if (peli == null)
-                return RedirectToAction("Index");
+            //if (peli == null)
+            //    return RedirectToAction("Index");
 
-
-            //foreach (var p in vm.Actores)
+            //foreach (var a in vm.Actores)
             //{
-            //    var reparto = new Participacion();
-            //    reparto.IdPelicula
-
+            //    peli.Participacion.Select(x => x.IdActor == a.ActorId).FirstOrDefault();
             //}
 
-
-            //repositoryParticipacion.Update();
-
-
-
+      
 
 
 
