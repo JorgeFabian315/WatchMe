@@ -6,6 +6,9 @@
 <div class="container">
     <h1 class="my-4">Editar actor</h1>
     <form method="post" action="~/Admin/Actores/Editar" enctype="multipart/form-data">
+
+        <input type="hidden" asp-for="Actor.Id" />
+
         <div class="row g-2 mb-4 mt-4">
             <div class="form-floating col-sm-12 col-md-6">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Nombre del actor"

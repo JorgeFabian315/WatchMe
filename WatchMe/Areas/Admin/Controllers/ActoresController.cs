@@ -123,13 +123,44 @@ namespace WatchMe.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Editar(AdminActorAgregarViewModel vm)
         {
-            var actor = repositoryActores.Get(vm.Actor.Id);
+            ModelState.Clear();
 
-            if (actor == null)
+            if (!ValidarActor(out List<string> Errores, vm))
+            {
+                foreach (var error in Errores)
+                {
+                    ModelState.AddModelError("", error);
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                var actor = repositoryActores.Get(vm.Actor.Id);
+
+                if(actor != null)
+                {
+                    actor.Nombre = vm.Actor.Nombre;
+                    actor.LugarNacimiento = vm.Actor.LugarNacimiento;
+                    actor.Biografia = vm.Actor.Biografia;
+                    actor.FechaNacimiento = vm.Actor.FechaNacimiento;
+
+                    repositoryActores.Update(actor);
+
+
+                    if(vm.Archivo != null)
+                    {
+                        System.IO.FileStream fs = System.IO.File.Create($"wwwroot/Imagenes/Actores/{vm.Actor.Id}.jpg");
+                        vm.Archivo.CopyTo(fs);
+                        fs.Close();
+                    }
+
+                }
+
                 return RedirectToAction(nameof(Index));
 
+            }
 
-            return View(actor);
+            return View(vm);
         }
 
 
