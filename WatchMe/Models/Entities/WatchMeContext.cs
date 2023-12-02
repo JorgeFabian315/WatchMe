@@ -31,9 +31,6 @@ public partial class WatchMeContext : DbContext
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("database=WatchMe;user=root;server=localhost;password=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.34-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -110,12 +107,11 @@ public partial class WatchMeContext : DbContext
 
             entity.HasIndex(e => e.PlataformaId, "fk_Pelicula_Plataforma1_idx");
 
-            entity.Property(e => e.CalificacionPromeido)
+            entity.Property(e => e.CalificacionPromedio)
                 .HasDefaultValueSql("'0'")
-                .HasColumnName("Calificacion_Promeido");
+                .HasColumnName("Calificacion_Promedio");
             entity.Property(e => e.ClasificacionId).HasColumnName("Clasificacion_Id");
             entity.Property(e => e.Director).HasMaxLength(50);
-            entity.Property(e => e.Duracion).HasMaxLength(45);
             entity.Property(e => e.FechaAgregada)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime");
