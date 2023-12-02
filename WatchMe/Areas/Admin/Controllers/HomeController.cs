@@ -32,6 +32,7 @@ namespace WatchMe.Areas.Admin.Controllers
                                 .Take(10)
                                 .Select(x => new UltimaPeliculaModel
                                 {
+                                    Id = x.Id,
                                     Titulo = x.Titulo,
                                     Clasificacion = x.Clasificacion.Nombre,
                                     Plataforma = x.Plataforma.Nombre

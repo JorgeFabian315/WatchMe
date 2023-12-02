@@ -2,16 +2,17 @@
 @{
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
-<form method="post" action="~/Admin/Actores/Eliminar">
-    <input type="hidden" asp-for="Id"/>
-    <p class="container__textoeliminar mt-3">
-        ¿Desea eliminar este actor: <span class="container__nombrepelicula">@Model.Nombre</span>?
-    </p>
-    <div class="col mb-2">
-        <img class="imagePreviewclassActor" src="~/Imagenes/Actores/@(Model.Id).jpg" />
-    </div>
-    <input type="submit" class="btn btn-success btn-lg mt-4 ms-4" value="Confirmar"/>
-    <a href="~/Admin/Actores" class="btn btn-danger btn-lg mt-4 ms-3">Cancelar</a>
-</form>
+<div class="container mt-4 pt-4 pb-4 bg-form-Custom">
+    <form method="post" action="~/Admin/Actores/Eliminar">
+        <input type="hidden" asp-for="Id" />
+        <p class="container__textoeliminar mt-3">
+            ¿Desea eliminar este actor: <span class="container__nombrepelicula">@Model.Nombre</span>?
+        </p>
+        <div class="col mb-2">
+            <img class="imagePreviewclassActor" src="~/Imagenes/Actores/@(Model.Id).jpg" />
+        </div>
+        <input type="submit" class="btn btn-success btn-lg mt-4 ms-4" value="Confirmar" />
+        <a href="~/Admin/Actores" class="btn btn-danger btn-lg mt-4 ms-3">Cancelar</a>
+    </form>
+</div>
 

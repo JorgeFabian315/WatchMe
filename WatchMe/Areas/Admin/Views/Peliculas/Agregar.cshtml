@@ -17,8 +17,8 @@
                 <label for="floatingInput">Director de la pelicula</label>
             </div>
         </div>
-        <div class="form-floating mb-3">
-            <input asp-for="Pelicula.Duracion" type="text" class="form-control" placeholder="Duración de la pelicula: HH:MM" required>
+        <div class="form-floating mb-3 col-md-5 col-lg-5 col-sm-12">
+            <input asp-for="Duracion" type="number" class="form-control" placeholder="Duración de la pelicula: HH:MM" required>
             <label for="floatingInput">Duración de la pelicula: Minutos</label>
         </div>
         <div class="form-floating mb-3">
@@ -65,7 +65,7 @@
             <label for="floatingSelectDisabled">Selecciona un genero</label>
         </div>
 
-        <div class="col-md-10 col-lg-10 mt-3 d-flex justify-content-center align-items-center mb-4">
+        <div class="col-md-10 col-lg-10 mt-3 py-4 d-flex justify-content-center align-items-center mb-4">
             <label class="text-start me-4">Actores principales:</label>
             <select id="selectActores" multiple asp-items="@(new MultiSelectList(Model.Actores,"Id","Nombre"))"
                     asp-for="ActoresId">
