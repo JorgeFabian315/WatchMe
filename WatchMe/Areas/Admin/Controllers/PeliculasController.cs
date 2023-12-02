@@ -327,7 +327,7 @@ namespace WatchMe.Areas.Admin.Controllers
                     ActorId = x.IdActor,
                     NombreActor = x.IdActorNavigation.Nombre,
                     Personaje = x.Personaje ?? "Desconocido"
-                })
+                }).ToList()
             };
 
 
@@ -338,27 +338,39 @@ namespace WatchMe.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Reparto(AdminPeliculasRepartoViewModel vm)
         {
+            ModelState.Clear();
 
-            //var peli = repositoryPeliculas.Get(vm.IdPelicula);
-
-            //if (peli == null)
-            //    return RedirectToAction("Index");
-
-            //foreach (var a in vm.Actores)
-            //{
-            //    peli.Participacion.Select(x => x.IdActor == a.ActorId).FirstOrDefault();
-            //}
-
-      
+            var p = repositoryPeliculas.Get(vm.IdPelicula);
+            
+            if (p == null)
+                return RedirectToAction("Index");
 
 
+            if (ModelState.IsValid)
+            {
+                foreach (var item in vm.Actores)
+                {
+                    var par = repositoryParticipacion.GetAll()
+                               .Where(x => x.IdPelicula == vm.IdPelicula && x.IdActor == item.ActorId)
+                               .FirstOrDefault();
+                    if (par != null)
+                    {
+                        par.Personaje = item.Personaje;
+                        repositoryParticipacion.Update(par);
+                    }
+                }
 
+                return RedirectToAction("Index");
+            }
 
-
-
-
-
-            return View();
+            vm.Actores = p.Participacion.Select(x => new ParticipacionPeliculaModel
+            {
+                ActorId = x.IdActor,
+                NombreActor = x.IdActorNavigation.Nombre,
+                Personaje = x.Personaje ?? "Desconocido"
+            }).ToList();
+           
+            return View(vm);
         }
 
 

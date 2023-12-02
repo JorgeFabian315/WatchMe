@@ -20,6 +20,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Fotografía</th>
                 <th>Nombre</th>
                 <th>Total peliculas</th>
                 <th>Opciones</th>
@@ -33,6 +34,10 @@
             {
                 <tr>
                     <td>@(i++)</td>
+                    <td>
+                        <img asp-append-version src="~/Imagenes/Actores/@(a.Id).jpg"
+                             style="width:80px; height:80px;  border-radius: 50%;">
+                    </td>
                     <td>@a.Nombre</td>
                     <td>@a.TotalPeliculas</td>
                     <td>

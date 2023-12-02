@@ -8,13 +8,13 @@ namespace WatchMe.Areas.Admin.Models.ViewModels.Peliculas
 
         public string TituloPelicula { get; set; } = null!;
 
-        public IEnumerable<ParticipacionPeliculaModel> Actores { get; set; } = null!;
+        public List<ParticipacionPeliculaModel> Actores { get; set; } = new();
 
     }
     public class ParticipacionPeliculaModel
     {
-        public string NombreActor { get; set; } = null!;
         public int ActorId { get; set; }
+        public string NombreActor { get; set; } = null!;
         public string Personaje { get; set; } = null!;
 
     }
