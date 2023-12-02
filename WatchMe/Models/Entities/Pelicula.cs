@@ -15,9 +15,9 @@ public partial class Pelicula
 
     public string Sinopsis { get; set; } = null!;
 
-    public sbyte? CalificacionPromeido { get; set; }
+    public int? CalificacionPromedio { get; set; }
 
-    public string Duracion { get; set; } = null!;
+    public int Duracion { get; set; }
 
     public string UrlTrailer { get; set; } = null!;
 

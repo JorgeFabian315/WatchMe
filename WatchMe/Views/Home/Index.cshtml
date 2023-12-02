@@ -1,17 +1,18 @@
-﻿@{
+﻿@model HomeIndexViewModel
+@{
 
     Layout = "Layout";
 }
 
 <section class="destacada">
     <a href="verpelicula.html">
-        <img src="image/Tenkinoko.jpg" alt="Nombre de la Película Destacada">
+        <img src="~/Imagenes/Peliculas/@(Model.PeliculaDestacada.Id).jpg" alt="@Model.PeliculaDestacada.Titulo">
         <div class="info">
-            <h2>Weathering With You</h2>
-            <p>Género: Drama</p>
+            <h2>@Model.PeliculaDestacada.Titulo</h2>
+            <p>Género: @Model.PeliculaDestacada.Genero</p>
             <div class="calificaciondestacada">
-                <img id="estrellapeliculadestacada" src="estrella.png">
-                <p>10</p>
+                <img id="estrellapeliculadestacada" src="~/estrella.png">
+                <p>@Model.PeliculaDestacada.CalificacionPromedio</p>
             </div>
         </div>
     </a>
@@ -22,245 +23,79 @@
     <div class="categoria">
         <h1>Peliculas mejor valoradas</h1>
         <div class="lista">
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
+
+            @foreach (var p in Model.PeliculasMejorValoradas)
+            {
+                <div class="pelicula">
+                    <a href="#">
+                        <div class="detalles">
+                            <div class="left">
+                                <p>@p.Titulo</p>
+                                <div class="calificacion">
+                                    <img id="estrellapelicula" src="~/estrella.png">
+                                    <p>@p.CalificacionPromedio</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
+                        <img src="~/Imagenes/Peliculas/@(p.Id).jpg">
+                    </a>
+                </div>
 
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-
+            }
         </div>
     </div>
 
     <div class="categoria">
-        <h1>Peliculas mejor valoradas</h1>
+        <h1>Tendencias</h1>
         <div class="lista">
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
+
+            @foreach (var a in Model.Tendencias)
+            {
+                <div class="pelicula">
+                    <a href="#">
+                        <div class="detalles">
+                            <div class="left">
+                                <p>@a.Titulo</p>
+                                <div class="calificacion">
+                                    <img id="estrellapelicula" src="~/estrella.png">
+                                    <p>@a.CalificacionPromedio</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
+                        <img src="~/Imagenes/Peliculas/@(a.Id).jpg">
+                    </a>
+                </div>
 
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
-
+            }
 
         </div>
     </div>
 
 
     <div class="categoria">
-        <h1>Peliculas mejor valoradas</h1>
+        <h1>Terror</h1>
         <div class="lista">
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
 
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
+            @foreach (var d in Model.Terror)
+            {
+                <div class="pelicula">
+                    <a href="#">
+                        <div class="detalles">
+                            <div class="left">
+                                <p>@d.Titulo</p>
+                                <div class="calificacion">
+                                    <img id="estrellapelicula" src="~/estrella.png">
+                                    <p>@d.CalificacionPromedio</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
+                        <img src="~/Imagenes/Peliculas/@(d.Id).jpg">
+                    </a>
+                </div>
+            }
 
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
 
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
 
-            <div class="pelicula">
-                <a href="#">
-                    <div class="detalles">
-                        <div class="left">
-                            <p>Weathering With You</p>
-                            <div class="calificacion">
-                                <img id="estrellapelicula" src="estrella.png">
-                                <p>10</p>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="image/Tenkinoko.jpg">
-                </a>
-            </div>
         </div>
     </div>
 </div>
