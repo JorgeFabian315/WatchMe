@@ -26,6 +26,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Poster</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Plataforma</th>
                 <th scope="col">Clasificación</th>
@@ -40,6 +41,10 @@
               
                 <tr>
                     <td>@(i++)</td>
+                    <td>
+                        <img asp-append-version src="~/Imagenes/Peliculas/@(p.Id).jpg"
+                             style="width:80px; height:100px;  border-radius: 10px; background-color: #184463;">
+                    </td>
                     <td>@p.Titulo</td>
                     <td>@p.Plataforma</td>
                     <td>@p.Clasificacion</td>

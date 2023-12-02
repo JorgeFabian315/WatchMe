@@ -111,6 +111,7 @@ namespace WatchMe.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                vm.Pelicula.Duracion = vm.Duracion + " min";
                 repositoryPeliculas.Insert(vm.Pelicula);
 
                 if (vm.Archivo == null) // No elijio archivo
@@ -250,7 +251,7 @@ namespace WatchMe.Areas.Admin.Controllers
 
                     peliculaExiste.Titulo = vm.Pelicula.Titulo;
                     peliculaExiste.Director = vm.Pelicula.Director;
-                    peliculaExiste.Duracion = vm.Pelicula.Duracion;
+                    peliculaExiste.Duracion = vm.Duracion + " min";
                     peliculaExiste.FechaLanzamiento = vm.Pelicula.FechaLanzamiento;
                     peliculaExiste.UrlTrailer = vm.Pelicula.UrlTrailer;
                     peliculaExiste.ClasificacionId = vm.Pelicula.ClasificacionId;
@@ -388,10 +389,8 @@ namespace WatchMe.Areas.Admin.Controllers
             else if (vm.Pelicula.Director.Length > 50)
                 errores.Add("El director de la película ha superado el tamaño establecido.");
 
-            if (string.IsNullOrWhiteSpace(vm.Pelicula.Duracion))
-                errores.Add("La duración de la película no puede estar vacía.");
-            else if (vm.Pelicula.Duracion.Length > 45)
-                errores.Add("La duración de la película ha superado el tamaño establecido.");
+            if (vm.Duracion <= 0 && vm.Duracion > 500)
+                errores.Add("La duración de la película es incorrecta");
 
             if (vm.Pelicula.FechaLanzamiento > DateTime.Now.Date)
                 errores.Add("La fecha de lanzamiento es incorrecta.");

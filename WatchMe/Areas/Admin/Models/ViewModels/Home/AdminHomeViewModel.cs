@@ -11,6 +11,7 @@
 
     public class UltimaPeliculaModel
     {
+        public int Id { get; set; }
         public string Titulo { get; set; } = null!;
         public string Plataforma { get; set; } = null!;
         public string Clasificacion { get; set; } = null!;

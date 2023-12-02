@@ -8,6 +8,8 @@ namespace WatchMe.Areas.Admin.Models.ViewModels.Peliculas
         {
             FechaLanzamiento = DateTime.Now
         };
+
+        public int Duracion { get; set; }
         public IEnumerable<Model>? Plataformas { get; set; }
         public IEnumerable<Model>? Clasificaciones { get; set; }
         public IEnumerable<Model>? Actores { get; set; }
