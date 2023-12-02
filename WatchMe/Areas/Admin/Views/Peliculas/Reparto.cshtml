@@ -5,20 +5,21 @@
 }
 
 <div class="container">
-    <h1 class="my-4 py-2">Agregar reparto</h1>
+    <h1 class="my-4 py-2">Modificar reparto</h1>
     <h3 class="my-4 py-2">Actores de la pelicula <span style="color: #E70010;">@Model.TituloPelicula</span></h3>
-    <form class="px-3 mt-3">
+    <form class="px-3 mt-3" method="post" action="~/Admin/Peliculas/Reparto">
+        <input asp-for="IdPelicula" type="hidden"/>
 
-        @foreach (var a in Model.Actores)
+        @for (int i = 0; i < Model.Actores.Count() ; i++)
         {
+            <input asp-for="Actores[i].ActorId" type="hidden" />
             <div class=" my-4 py-2">
                 <label class="px-4 pb-3" style="font-weight: 600;">
-                    @a.NombreActor
+                    @Model.Actores[i].NombreActor
                 </label>
-                <input type="text" class="form-control p-3" asp-for="@a.Personaje" required>
+                <input type="text" class="form-control p-3" asp-for="Actores[i].Personaje" required>
             </div>
         }
-
 
         <p class="pb-2" id="Errores"></p>
         <div class="mt-5">
