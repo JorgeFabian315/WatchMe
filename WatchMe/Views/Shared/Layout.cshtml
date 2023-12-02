@@ -1,1 +1,36 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchMe</title>
+    <link rel="stylesheet" href="~/css/style.css">
+
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">
+            <img src="~/Logo.png">
+        </a>
+        <div id="barrabusqueda">
+            <input type="text">
+            <a href="busqueda.html">
+                <img src="lupa.png">
+            </a>
+        </div>
+        <div class="navbar">
+            <ul>
+                <li><a href="#">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+    @RenderBody()
+    </main>
+</body>
+
+</html>
