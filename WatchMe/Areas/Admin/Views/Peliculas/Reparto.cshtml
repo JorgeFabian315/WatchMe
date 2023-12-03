@@ -14,14 +14,14 @@
         {
             <input asp-for="Actores[i].ActorId" type="hidden" />
             <div class=" my-4 py-2">
-                <label class="px-4 pb-3" style="font-weight: 600;">
-                    @Model.Actores[i].NombreActor
+                <label class="px-4 pb-3" style="font-weight: 600;font-size:1.2rem;">
+                    Asigna un personaje para: <span style="color:#E70010;">@Model.Actores[i].NombreActor</span>
                 </label>
-                <input type="text" class="form-control p-3" asp-for="Actores[i].Personaje" required>
+                <input type="text" class="form-control p-3" asp-for="Actores[i].Personaje">
             </div>
         }
 
-        <p class="pb-2" id="Errores"></p>
+        <p class="pb-2" id="Errores">@Html.ValidationSummary(true)</p>
         <div class="mt-5">
             <input type="submit" class="btn btn-success btn-lg " value="Guardar" />
             <a href="IndexActor.html" class="btn btn-danger btn-lg ms-3">Cancelar</a>

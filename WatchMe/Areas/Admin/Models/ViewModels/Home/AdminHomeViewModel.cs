@@ -7,6 +7,7 @@
         public int TotalPlataformas { get; set; }
 
         public IEnumerable<UltimaPeliculaModel> UltimasPeliculasAgregadas { get; set; } = null!;
+        public IEnumerable<ActorModel> UltimasActoresAgregados { get; set; } = null!;
     }
 
     public class UltimaPeliculaModel
@@ -15,5 +16,10 @@
         public string Titulo { get; set; } = null!;
         public string Plataforma { get; set; } = null!;
         public string Clasificacion { get; set; } = null!;
+    }
+    public class ActorModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; } = null!;
     }
 }

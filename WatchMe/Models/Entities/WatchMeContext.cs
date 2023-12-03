@@ -31,7 +31,6 @@ public partial class WatchMeContext : DbContext
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -45,6 +44,9 @@ public partial class WatchMeContext : DbContext
             entity.ToTable("actor");
 
             entity.Property(e => e.Biografia).HasColumnType("text");
+            entity.Property(e => e.FechaAgregado)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("datetime");
             entity.Property(e => e.FechaNacimiento)
                 .HasColumnType("datetime")
                 .HasColumnName("Fecha_Nacimiento");

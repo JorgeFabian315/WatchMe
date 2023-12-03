@@ -29,16 +29,24 @@ namespace WatchMe.Areas.Admin.Controllers
                 TotalPlataformas = repositoryPlataforma.GetAll().Count(),
                 UltimasPeliculasAgregadas = repositoryPeliculas.GetAll()
                                 .OrderBy(x => x.FechaAgregada)
-                                .Take(10)
+                                .Take(3)
                                 .Select(x => new UltimaPeliculaModel
                                 {
                                     Id = x.Id,
                                     Titulo = x.Titulo,
                                     Clasificacion = x.Clasificacion.Nombre,
                                     Plataforma = x.Plataforma.Nombre
-                                })
-            };
+                                }),
 
+                UltimasActoresAgregados = repositoryActor.GetAll()
+                                .Take(3)
+                                .OrderBy(x => x.FechaAgregado)
+                                 .Select(x => new ActorModel
+                                 {
+                                     Id = x.Id,
+                                     Nombre = x.Nombre
+                                 })
+        };
             return View(vm);
         }
     }
