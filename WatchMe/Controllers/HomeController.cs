@@ -16,7 +16,7 @@ namespace WatchMe.Controllers
         public IActionResult Index()
         {
             var pelidestacada = repositoryPeliculas.GetAll()
-                .OrderBy(x => x.CalificacionPromedio)
+                .OrderByDescending(x => x.CalificacionPromedio)
                 .Select(x => new PeliculaIndexModel
                 {
                     Id = x.Id,
@@ -72,11 +72,75 @@ namespace WatchMe.Controllers
                 })
 
             };
+            return View(vm);
+        }
 
+        [Route("~/BuscarPelicula/{id}")]
+        [Route("~/BuscarPelicula")]
+        public IActionResult BuscarPelicula(string id)
+        {
 
-
+            var vm = new HomeBusquedaPeliculaViewModel()
+            {
+                Busqueda = id,
+                PeliculasBuscadas = repositoryPeliculas.GetAll()
+                .OrderBy(x => x.Titulo)
+                .Where(x => x.Titulo.ToLower().Contains(id.ToLower()))
+                .Select(x => new PeliculaBusquedaModel
+                {
+                    Id = x.Id,
+                    Titulo = x.Titulo,
+                    Calificacion = x.CalificacionPromedio ?? 0
+                })
+            };
 
             return View(vm);
         }
+
+        [Route("~/VerDetalles/{id}")]
+        public IActionResult VerDetalles(string id)
+        {
+            id = id.Replace("-", " ");
+
+            var peli = repositoryPeliculas.GetByName(id);
+
+            if (peli == null)
+                return RedirectToAction("Index");
+
+            return View(peli);
+        }
+
+        [Route("~/Genero/{genero}")]
+        public IActionResult PeliculasPorGenero(string genero)
+        {
+            genero = genero.Replace("-", " ");
+
+
+            var vm = new HomeBusquedaPeliculaViewModel()
+            {
+                Busqueda = genero,
+                PeliculasBuscadas = repositoryPeliculas.GetAll()
+                      .OrderBy(x => x.Titulo)
+                      .Where(x => x.IdGeneroNavigation.Nombre.ToLower().Contains(genero.ToLower()))
+                      .Select(x => new PeliculaBusquedaModel
+                      {
+                          Id = x.Id,
+                          Titulo = x.Titulo,
+                          Calificacion = x.CalificacionPromedio ?? 0
+                      })
+            };
+
+            return View(vm);
+        }
+
+
+        public IActionResult Login() => View();
+
+        [HttpPost]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
     }
 }

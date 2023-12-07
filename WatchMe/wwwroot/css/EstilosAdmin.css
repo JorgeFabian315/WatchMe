@@ -1,13 +1,13 @@
+@font-face {
+    font-family: 'DM';
+    src: url(Media.ttf);
+}
 :root {
     --blanco: #E0E0E0;
     --azul-opacidad: #184463;
     --bg-menu: #283A51;
     --amarrillo: #DBF815;
     --rojo: #E70010;
-}
-@font-face {
-    font-family: 'DM';
-    src: url(Media.ttf);
 }
 
 * {
@@ -29,7 +29,7 @@ main {
     width: 100%;
     position: relative;
     overflow-y: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .headerAdmin {
@@ -37,7 +37,6 @@ main {
     width:100%;
     display:flex;
     justify-content:end;
-    background-color: var(--bg-menu);
 }
 
 .menu-dashboard {
@@ -186,13 +185,12 @@ table td{
     margin-right:30px;
 }
 .InfoAdmin p{
-    color: #ffff;
     margin:0;
     padding:0;
     margin-left: 5px;
 }
 .InfoAdmin span{
-    color:#DBF815;
+    color:#E70010;
     font-weight:600;
 }
 .imgUsuario {

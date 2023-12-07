@@ -30,7 +30,6 @@ public partial class WatchMeContext : DbContext
     public virtual DbSet<Reseña> Reseña { get; set; }
 
     public virtual DbSet<Usuario> Usuario { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder

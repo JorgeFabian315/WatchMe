@@ -1,0 +1,25 @@
+﻿@model HomeBusquedaPeliculaViewModel
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 class="titulofiltrado">Películas del género "@Model.Busqueda"</h2>
+<div id="filtrado">
+    @foreach (var p in Model.PeliculasBuscadas)
+    {
+        <div class="pelicula">
+            <a href="~/VerDetalles/@p.Titulo.Replace(" ", "-")">
+                <div class="detalles">
+                    <div class="left">
+                        <p>@p.Titulo</p>
+                        <div class="calificacion">
+                            <img id="estrellapelicula" src="~/estrella.png">
+                            <p>@p.Calificacion %</p>
+                        </div>
+                    </div>
+                </div>
+                <img asp-append-version src="~/Imagenes/Peliculas/@(p.Id).jpg">
+            </a>
+        </div>
+    }
+</div>

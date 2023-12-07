@@ -1,0 +1,19 @@
+﻿@model Reseña
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="reseñarealizada">
+    <form action="~/Reseñas/Eliminar" method="post">
+        <input type="hidden" asp-for="Id" />
+        <h3>
+            ¿Está seguro que desea eliminar su reseña de:
+            <span>"@Model.IdPeliculaNavigation.Titulo"</span>?
+        </h3>
+        <div class="botoneseliminar">
+            <input type="submit" value="Aceptar" class="agregar" />
+            <a class="cancelar" href="~/VerDetalles/@Model.IdPeliculaNavigation.Titulo.Replace(" ", "-")">Cancelar</a>
+        </div>
+    </form>
+</div>
+

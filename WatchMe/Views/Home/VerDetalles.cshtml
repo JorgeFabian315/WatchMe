@@ -1,0 +1,88 @@
+﻿@model Pelicula
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div id="verpelicula">
+    <img asp-append-version src="~/Imagenes/Peliculas/@(Model.Id).jpg">
+    <div id="informacion">
+        <h2>@Model.Titulo</h2>
+        <p id="clasificacion">@Model.Clasificacion.Nombre</p>
+        <p id="genero">@Model.IdGeneroNavigation.Nombre</p>
+        <div id="fecha">
+            <img src="~/fecha.png">
+            <p>@Model.FechaLanzamiento.ToShortDateString()</p>
+        </div>
+
+        <div id="duracion">
+            <img src="~/duracion.png">
+            <p>@Model.Duracion min</p>
+        </div>
+
+        <div id="calificacion">
+            <img src="~/estrella.png">
+            <p>@Model.CalificacionPromedio %</p>
+        </div>
+        <p id="sinopsis">
+            @Model.Sinopsis
+        </p>
+    </div>
+</div>
+
+<div id="datosadicionales">
+    <div id="datos">
+        <p id="director">Director:&nbsp;  <span>@Model.Director</span>
+        <p id="plataformas">Plataforma:&nbsp; <span>@Model.Plataforma.Nombre</span></p>
+    </div>
+    <div id="trailer">
+        <img src="~/youtube.png">
+        <div id="datos">
+            <h3>YouTube</h3>
+            <p>Mira el trailer aqui</p>
+        </div>
+        <a href="@Model.UrlTrailer" target="_blank">
+            <input type="button" value="Mirar trailer" />
+        </a>
+    </div>
+</div>
+
+<h4 id="reparto"> Reparto Principal</h4>
+<div id="listadoactores">
+
+    @foreach (var a in Model.Participacion)
+    {
+        <div class="actor">
+            <img src="~/Imagenes/Actores/@(a.IdActorNavigation.Id).jpg">
+            <div class="papel">
+                <a href="veractor.html" class="nombre">@a.IdActorNavigation.Nombre</a>
+                <p class="personaje">@a.Personaje</p>
+            </div>
+        </div>
+    }
+
+</div>
+
+<div id="tituloreseña">
+    <h3>Reseñas</h3>
+    <a href="~/Reseñas/Agregar/@Model.Titulo.Replace(" ", "-")">
+        <input type="button" value="Realizar reseña" href />
+    </a>
+</div>
+
+<div id="listareseñas">
+
+    @foreach (var r in Model.Reseña)
+    {
+    <div class="reseña">
+        <div class="principal">
+            <p class="nota">@r.Calificacion</p>
+            <h4>@r.IdUsuarioNavigation.Nombre</h4>
+            <p class="fechareseña">@r.Fecha.ToShortDateString()</p>
+        </div>
+        <p>
+         @r.Comentario
+        </p>
+    </div>      
+    }
+
+</div>
+

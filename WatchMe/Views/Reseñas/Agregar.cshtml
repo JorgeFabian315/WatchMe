@@ -1,0 +1,37 @@
+﻿@model ReseñaAgregarViewModel
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div id="bloquereseña">
+    <h3>
+        ¿Qué te pareció la película
+        <span>"@Model.Titulo"</span>?
+    </h3>
+    <form method="post" action="~/Reseñas/Agregar">
+        <input type="hidden" asp-for="Titulo" />
+        <h4>Calificación:</h4>
+        <div class="estrellas">
+            @for (int i = 1; i <= 10; i++)
+            {
+                <input type="radio" id="rating@(i)" name="Reseña.Calificacion"
+                       value="@i">
+                <label for="rating@(i)" class="fa fa-star"></label>
+            }
+
+        </div>
+        <textarea rows="5" placeholder="Escriba su opinión" asp-for="Reseña.Comentario"></textarea>
+        <p>@Html.ValidationSummary(true)</p>
+        
+        <div class="botones">
+            <input type="submit"
+                style="background-color:green; color:white; letter-spacing:1px;"
+                value="Agregar" id="agregar" />
+            <a id="cancelar"
+               style="background-color:red; color:white; letter-spacing:1px;"
+               href="~/">Cancelar</a>
+        </div>
+    </form>
+
+</div>
+

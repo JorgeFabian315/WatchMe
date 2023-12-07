@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using WatchMe.Models.Entities;
@@ -10,6 +11,8 @@ builder.Services.AddMvc();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Genero>>();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Plataforma>>();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Clasificacion>>();
+builder.Services.AddTransient<WatchMe.Repositories.Repository<Reseña>>();
+builder.Services.AddTransient<ReseñaRepositorio>();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Participacion>>();
 builder.Services.AddTransient<ActoresRepository>();
 builder.Services.AddTransient<PeliculasRepository>();
@@ -18,11 +21,22 @@ builder.Services.AddDbContext<WatchMeContext>(
    optionsBuilder =>
    optionsBuilder.UseMySql("database=WatchMe;user=root;server=localhost;password=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.34-mysql")));
 
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x =>
+    {
+        x.AccessDeniedPath = "/Home/Denied";
+        x.LoginPath = "/Home/Login";
+        x.LogoutPath = "/Home/Logout";
+        x.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        x.Cookie.Name = "FruteriaCookie";
+    });
 
 var app = builder.Build();
 
 app.UseFileServer();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseStaticFiles();
 

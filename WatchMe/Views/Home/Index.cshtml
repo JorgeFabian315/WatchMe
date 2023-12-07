@@ -5,42 +5,38 @@
 }
 
 <section class="destacada">
-    <a href="verpelicula.html">
-        <img src="~/Imagenes/Peliculas/@(Model.PeliculaDestacada.Id).jpg" alt="@Model.PeliculaDestacada.Titulo">
+    <a href="~/VerDetalles/@Model.PeliculaDestacada.Titulo.Replace(" ", "-")">
+        <img asp-append-version src="~/Imagenes/Peliculas/@(Model.PeliculaDestacada.Id).jpg" alt="@Model.PeliculaDestacada.Titulo">
         <div class="info">
             <h2>@Model.PeliculaDestacada.Titulo</h2>
             <p>Género: @Model.PeliculaDestacada.Genero</p>
             <div class="calificaciondestacada">
-                <img id="estrellapeliculadestacada" src="~/estrella.png">
-                <p>@Model.PeliculaDestacada.CalificacionPromedio</p>
+                <img  id="estrellapeliculadestacada" src="~/estrella.png">
+                <p>@Model.PeliculaDestacada.CalificacionPromedio %</p>
             </div>
         </div>
     </a>
 </section>
-
 <div class="listadopeliculas">
-
     <div class="categoria">
         <h1>Peliculas mejor valoradas</h1>
         <div class="lista">
-
             @foreach (var p in Model.PeliculasMejorValoradas)
             {
                 <div class="pelicula">
-                    <a href="#">
+                    <a href="~/VerDetalles/@p.Titulo.Replace(" ", "-")">
                         <div class="detalles">
                             <div class="left">
                                 <p>@p.Titulo</p>
                                 <div class="calificacion">
                                     <img id="estrellapelicula" src="~/estrella.png">
-                                    <p>@p.CalificacionPromedio</p>
+                                    <p>@p.CalificacionPromedio %</p>
                                 </div>
                             </div>
                         </div>
-                        <img src="~/Imagenes/Peliculas/@(p.Id).jpg">
+                        <img asp-append-version src="~/Imagenes/Peliculas/@(p.Id).jpg">
                     </a>
                 </div>
-
             }
         </div>
     </div>
@@ -52,22 +48,20 @@
             @foreach (var a in Model.Tendencias)
             {
                 <div class="pelicula">
-                    <a href="#">
+                    <a href="~/VerDetalles/@a.Titulo.Replace(" ", "-")">
                         <div class="detalles">
                             <div class="left">
                                 <p>@a.Titulo</p>
                                 <div class="calificacion">
                                     <img id="estrellapelicula" src="~/estrella.png">
-                                    <p>@a.CalificacionPromedio</p>
+                                    <p>@a.CalificacionPromedio %</p>
                                 </div>
                             </div>
                         </div>
-                        <img src="~/Imagenes/Peliculas/@(a.Id).jpg">
+                        <img asp-append-version src="~/Imagenes/Peliculas/@(a.Id).jpg">
                     </a>
                 </div>
-
             }
-
         </div>
     </div>
 
@@ -79,17 +73,17 @@
             @foreach (var d in Model.Terror)
             {
                 <div class="pelicula">
-                    <a href="#">
+                    <a href="~/VerDetalles/@d.Titulo.Replace(" ", "-")">
                         <div class="detalles">
                             <div class="left">
                                 <p>@d.Titulo</p>
                                 <div class="calificacion">
                                     <img id="estrellapelicula" src="~/estrella.png">
-                                    <p>@d.CalificacionPromedio</p>
+                                    <p>@d.CalificacionPromedio %</p>
                                 </div>
                             </div>
                         </div>
-                        <img src="~/Imagenes/Peliculas/@(d.Id).jpg">
+                        <img asp-append-version src="~/Imagenes/Peliculas/@(d.Id).jpg">
                     </a>
                 </div>
             }
