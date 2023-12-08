@@ -25,5 +25,19 @@ namespace WatchMe.Repositories
                 .Include(x => x.IdGeneroNavigation)
                 .OrderBy(x => x.Titulo);
         }
+
+
+        public  Pelicula? GetByName(string titulo)
+        {
+            return Context.Pelicula
+                .Include(p => p.IdGeneroNavigation)
+                .Include(x => x.Participacion)
+                    .ThenInclude(x => x.IdActorNavigation)
+                .Include(x => x.Reseña)
+                    .ThenInclude(x => x.IdUsuarioNavigation)
+                .Include(x => x.Clasificacion)
+                .Include(x => x.Plataforma)
+                .FirstOrDefault(p => p.Titulo.ToLower() == titulo.ToLower());
+        }
     }
 }

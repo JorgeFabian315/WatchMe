@@ -16,5 +16,11 @@ namespace WatchMe.Repositories
                 .Include(x => x.Participacion)
                 .OrderBy(x => x.Nombre);
         }
+
+        public Actor? GetByNombre(string nombre)
+        {
+            return Context.Actor.FirstOrDefault(x => x.Nombre.ToLower() == nombre.ToLower());
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WatchMe.Areas.Admin.Models.ViewModels.Peliculas;
 using WatchMe.Models.Entities;
@@ -7,6 +8,7 @@ using WatchMe.Repositories;
 namespace WatchMe.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Administrador")]
     public class PeliculasController : Controller
     {
         private readonly Repository<Genero> repositoryGeneros;
@@ -353,6 +355,10 @@ namespace WatchMe.Areas.Admin.Controllers
                     var par = repositoryParticipacion.GetAll()
                                .Where(x => x.IdPelicula == vm.IdPelicula && x.IdActor == item.ActorId)
                                .FirstOrDefault();
+
+                    if (string.IsNullOrWhiteSpace(item.Personaje))
+                        ModelState.AddModelError("", "El personaje del actor no puede estar vació.");
+
                     if (par != null)
                     {
                         par.Personaje = item.Personaje;
@@ -387,8 +393,10 @@ namespace WatchMe.Areas.Admin.Controllers
                 errores.Add("El director de la película no puede estar vacío.");
             else if (vm.Pelicula.Director.Length > 50)
                 errores.Add("El director de la película ha superado el tamaño establecido.");
+            else if(vm.Pelicula.Director.Length <= 5)
+                errores.Add("El nombre del director de la película no tiene el suficiente tamaño.");
 
-            if (vm.Pelicula.Duracion <= 0 || vm.Pelicula.Duracion > 500)
+            if (vm.Pelicula.Duracion <= 0 || vm.Pelicula.Duracion >= 500)
                 errores.Add("La duración de la película es incorrecta");
 
             if (vm.Pelicula.FechaLanzamiento > DateTime.Now.Date)
@@ -398,6 +406,8 @@ namespace WatchMe.Areas.Admin.Controllers
                 errores.Add("El trailer de la película no puede estar vacío.");
             else if (vm.Pelicula.Titulo.Length > 150)
                 errores.Add("El trailer de la película ha superado el tamaño establecido.");
+            else if(vm.Pelicula.UrlTrailer.Length < 20)
+                errores.Add("El trailer de la película no tiene el suficiente tamaño.");
 
             if (vm.Pelicula.PlataformaId == 0)
                 errores.Add("Selecciona una plataforma.");
@@ -410,7 +420,8 @@ namespace WatchMe.Areas.Admin.Controllers
 
             if (string.IsNullOrWhiteSpace(vm.Pelicula.Sinopsis))
                 errores.Add("La sinopsis de la película no puede estar vacío.");
-
+            else if (vm.Pelicula.Sinopsis.Length < 20)
+                errores.Add("La sinopsis de la película no tiene el suficiente tamaño.");
 
             if (vm.ActoresId == null)
                 errores.Add("Selecciona actores.");

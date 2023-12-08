@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'DM';
+    src: url(Media.ttf);
+}
 :root {
     --blanco: #E0E0E0;
     --azul-opacidad: #184463;
@@ -12,14 +16,9 @@
     box-sizing: border-box;
 }
 
-html {
-    background-color: #E70010;
-}
-
 body {
-
     height: 100vh;
-    font-family: sans-serif;
+    font-family: DM;
     display: flex;
     width: 100%;
     overflow: hidden;
@@ -30,30 +29,29 @@ main {
     width: 100%;
     position: relative;
     overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.headerAdmin {
+    height: 80px;
+    width:100%;
+    display:flex;
+    justify-content:end;
 }
 
 .menu-dashboard {
     width: 300px;
-    padding: 20px;
+    padding: 10px;
     height: 100vh;
-    background-color: transparent;
     transition: max-width .3s ease;
     background-color: var(--bg-menu);
     color: var(--blanco);
-    align-items: stretch;
 }
-
-.top-menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 50px;
-}
-
 
 #logo {
-    margin-top: 10px;
-    width: 100%;
+    margin-top: 20px;
+    width: 90%;
+    margin-bottom: 50px;
 }
 
 .top-menu .logo img {
@@ -70,12 +68,12 @@ main {
     margin-left: 10px;
 }
 
-.menu .enlace {
-    width: 100%;
+.enlace {
     color: white;
     padding: 15px 20px;
     border-radius: 8px;
     display: flex;
+    width: 240px;
     align-items: center;
     margin-bottom: 20px;
     text-decoration: none;
@@ -84,12 +82,19 @@ main {
     transition: all .2s ease;
 }
 
-.menu .enlace:hover {
-    background: var(--blanco);
-    color: var(--rojo);
+.enlace:hover {
+        background: #fff;
+        color: var(--rojo);
+    }
+
+
+.cerrarsesion {
+    position: absolute;
+    bottom: 10px;
 }
 
-.menu .enlace i {
+
+.enlace i {
     margin-right: 20px;
     font-size: 30px;
 }
@@ -163,22 +168,47 @@ textarea {
 .estadisticasTotal span {
     color: #E0E0E0;
     font-size: 3rem;
-
     letter-spacing: 2px;
 }
 
-.table tr td{
-   vertical-align:middle;
-   font-size:1.2rem;
+table td{
+    vertical-align:middle;
+    font-size:1.2rem;
 }
 
-@media screen and (max-width:700px) {
+.InfoAdmin{
+    display:flex;
+    flex-direction:row-reverse;
+    align-items:center;
+    justify-content:end;
+    margin-right:30px;
+}
+.InfoAdmin p{
+    margin:0;
+    padding:0;
+    margin-left: 5px;
+}
+.InfoAdmin span{
+    color:#E70010;
+    font-weight:600;
+}
+.imgUsuario {
+    width: 50px;
+    height: 50px;
+    border-radius:50px;
+    margin-right:15px;
+}
+
+@media screen and (max-width:900px) {
     .menu-dashboard {
         width: 100px;
     }
 
-    .menu-dashboard span {
-        display: none;
-    }
+        .menu-dashboard span {
+            display: none;
+        }
 
+    .enlace {
+        width: 80px;
+    }
 }

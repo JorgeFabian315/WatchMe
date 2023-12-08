@@ -15,5 +15,7 @@ public partial class Actor
 
     public string LugarNacimiento { get; set; } = null!;
 
+    public DateTime? FechaAgregado { get; set; }
+
     public virtual ICollection<Participacion> Participacion { get; set; } = new List<Participacion>();
 }

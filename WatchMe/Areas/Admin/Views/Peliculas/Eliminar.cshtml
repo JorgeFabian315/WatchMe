@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 <div class="container mt-4 pt-4 pb-4 bg-form-Custom">
-    <h1 class=" mt-4">Eliminar pelicula</h1>
+    <h1 class=" mt-4">Eliminar película</h1>
     <form method="post" action="~/Admin/Peliculas/Eliminar">
         <input type="hidden" asp-for="Id" />
         <p class="container__textoeliminar mt-3">
-            ¿Desea eliminar esta pelicula: <span class="container__nombrepelicula">@Model.Titulo</span>?
+            ¿Desea eliminar esta película: <span class="container__nombrepelicula">@Model.Titulo</span>?
         </p>
         <div class="col mb-2">
             <img class="imagePreviewclass" src="~/Imagenes/Peliculas/@(Model.Id).jpg" />

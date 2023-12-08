@@ -1,0 +1,49 @@
+﻿@model HomeLoginViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchMe</title>
+    <link rel="stylesheet" href="~/css/style.css">
+
+</head>
+<body style="overflow:hidden;">
+    <main id="mainlogin">
+        <div class="login">
+            <div class="izquierda">
+                <h3>Bienvenido a</h3>
+                <h2>Watch<span>Me</span></h2>
+                <p>El mejor sitio para averiguar acerca del estreno de tus peliculas favoritas.</p>
+              <form action="~/Home/Login" method="post">
+                    <div class="correo">
+                        <img>
+                        <input type="text" placeholder="Correo electrónico" asp-for="CorreoElectronico">
+                    </div>
+
+                    <div class="contraseña">
+                        <img>
+                        <input type="password" placeholder="Contraseña" asp-for="Contraseña">
+                    </div>
+                    <p class="errores">@Html.ValidationSummary(true)</p>
+                    <div class="iniciarsesionboton">
+                        <input type="submit" value="Iniciar sesión">
+                    </div>
+              </form>
+            </div>
+
+            <div class="derecha">
+                <div class="color"></div>
+                <h3>Watch<span>Me</span></h3>
+                <p>
+                    Dentro de WatchMe podrás conocer los estrenos más recientes en el mundo del
+                    séptimo arte y conocer la opinión de los críticos especializados sobre ellas
+                </p>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+</html>

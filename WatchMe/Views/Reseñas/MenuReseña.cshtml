@@ -1,0 +1,26 @@
+﻿@model Reseña
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="reseñarealizada">
+    <h3>
+        Su reseña de:
+        <span>"@Model.IdPeliculaNavigation.Titulo"</span>
+    </h3>
+
+    <div class="reseña">
+        <div class="principal">
+            <p class="nota">@Model.Calificacion</p>
+            <h4>@Model.IdUsuarioNavigation.Nombre</h4>
+            <p class="fechareseña">@Model.Fecha.ToShortDateString()</p>
+        </div>
+        <p>
+            @Model.Comentario
+        </p>
+    </div>
+    <div class="botonesreseña">
+        <a href="~/Reseñas/Editar/@Model.Id"><img src="~/Recursos/editar.png"></a>
+        <a href="~/Reseñas/Eliminar/@Model.Id"><img src="~/Recursos/eliminar.png"></a>
+    </div>
+</div>

@@ -3,31 +3,31 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 <div class="container">
-    <h1 class="mt-4 mb-3 pb-3 px-4">Agregar pelicula</h1>
+    <h1 class="mt-4 mb-3 pb-3 px-4">Agregar película</h1>
     <form action="~/Admin/Peliculas/Agregar" method="post" class="mb-3 pb-4" enctype="multipart/form-data">
         <div class="row g-2 mb-4">
             <div class="form-floating col-md-6">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Título de la pelicula"
+                <input type="text" class="form-control" id="floatingInput" placeholder="Título de la película"
                        asp-for="Pelicula.Titulo" required>
-                <label for="floatingInput">Título de la pelicula</label>
+                <label for="floatingInput">Título de la película</label>
             </div>
             <div class="form-floating col-md-6">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Director de la pelicula"
+                <input type="text" class="form-control" id="floatingInput" placeholder="Director de la película"
                        asp-for="Pelicula.Director" required>
-                <label for="floatingInput">Director de la pelicula</label>
+                <label for="floatingInput">Director de la película</label>
             </div>
         </div>
         <div class="form-floating mb-3 col-md-5 col-lg-5 col-sm-12">
-            <input asp-for="Pelicula.Duracion" type="number" class="form-control" placeholder="Duración de la pelicula: HH:MM" required>
-            <label for="floatingInput">Duración de la pelicula: Minutos</label>
+            <input asp-for="Pelicula.Duracion" type="number" class="form-control" placeholder="Duración de la película: HH:MM" required>
+            <label for="floatingInput">Duración de la película: Minutos</label>
         </div>
         <div class="form-floating mb-3">
-            <input asp-for="Pelicula.FechaLanzamiento" type="date" class="form-control" placeholder="Dirección (URL) de la pelicula" required>
+            <input asp-for="Pelicula.FechaLanzamiento" type="date" class="form-control" placeholder="Dirección (URL) de la película" required>
             <label for="floatingInput">Fecha de lanzamiento</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" asp-for="Pelicula.UrlTrailer" placeholder="Dirección (URL) de la pelicula" required>
-            <label for="floatingInput">Dirección (URL) del trailer de la pelicula (YouTube)</label>
+            <input type="text" class="form-control" asp-for="Pelicula.UrlTrailer" placeholder="Dirección (URL) de la película" required>
+            <label for="floatingInput">Dirección (URL) del trailer de la película (YouTube)</label>
         </div>
 
         <div class="row g-2 mb-4">
@@ -53,7 +53,7 @@
         <div class="form-floating">
             <textarea style="height: 150px" class="form-control textarea-custom"
                       asp-for="Pelicula.Sinopsis" placeholder="Sinopsis de la pelicula" required></textarea>
-            <label for="floatingTextarea">Sinopsis de la pelicula</label>
+            <label for="floatingTextarea">Sinopsis de la película</label>
         </div>
 
         <div class="form-floating mt-3 col-sm-12 col-md-6 col-lg-12">
@@ -73,13 +73,13 @@
         </div>
         <div class="form-floating mb-3">
             <input type="file" id="fileUpload1" accept="image/jpg" class="form-control table-boxshadow"
-                   placeholder="Poster de la pelicula" asp-for="Archivo"/>
-            <label>Dirección (URL) del poster de la pelicula</label>
+                   placeholder="Poster de la película" asp-for="Archivo" />
+            <label>Dirección (URL) del poster de la película</label>
         </div>
 
         <img id="imagePreview" class="imagePreviewclass" src="~/Imagenes/Peliculas/0.jpg" />
 
-        <p class="pb-2 pt-2" id="Errores">@Html.ValidationSummary(true)</p>
+        <p class="pb-2 pt-2" style="color:red;" id="Errores">@Html.ValidationSummary(true)</p>
 
         <div class="row d-flex justify-content-center align-items-center">
             <input type="submit" class="btn btn-success btn-lg mt-4 ms-4 col-sm-5 col-md-2 col-lg-2"
@@ -94,9 +94,9 @@
 <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
 <script>
     new MultiSelectTag('selectActores', {
-        rounded: true,    // default true
-        shadow: true,      // default false
-        placeholder: 'Search',  // default Search...
+        rounded: true,
+        shadow: true,
+        placeholder: 'Search',
         tagColor: {
             textColor: '#ffff',
             borderColor: '#92e681',
