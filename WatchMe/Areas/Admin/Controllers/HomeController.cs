@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WatchMe.Areas.Admin.Models.ViewModels.Home;
 using WatchMe.Models.Entities;
 using WatchMe.Repositories;
@@ -6,6 +7,7 @@ using WatchMe.Repositories;
 namespace WatchMe.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Administrador")]
     public class HomeController : Controller
     {
         private readonly PeliculasRepository repositoryPeliculas;
@@ -28,7 +30,7 @@ namespace WatchMe.Areas.Admin.Controllers
                 TotalActores = repositoryActor.GetAll().Count(),
                 TotalPlataformas = repositoryPlataforma.GetAll().Count(),
                 UltimasPeliculasAgregadas = repositoryPeliculas.GetAll()
-                                .OrderBy(x => x.FechaAgregada)
+                                .OrderByDescending(x => x.FechaAgregada)
                                 .Take(3)
                                 .Select(x => new UltimaPeliculaModel
                                 {
@@ -40,7 +42,7 @@ namespace WatchMe.Areas.Admin.Controllers
 
                 UltimasActoresAgregados = repositoryActor.GetAll()
                                 .Take(3)
-                                .OrderBy(x => x.FechaAgregado)
+                                .OrderByDescending(x => x.FechaAgregado)
                                  .Select(x => new ActorModel
                                  {
                                      Id = x.Id,

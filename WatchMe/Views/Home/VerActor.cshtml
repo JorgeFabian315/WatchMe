@@ -1,0 +1,19 @@
+﻿@model Actor
+@{
+    Layout = "Layout";
+}
+<div id="actor">
+    <div id="partesuperior">
+        <img src="~/Imagenes/Actores/@(Model.Id).jpg">
+        <div id="datosprincipales">
+            <h2>@Model.Nombre</h2>
+            <p>Fecha de nacimiento: <span>@Model.FechaNacimiento.ToShortDateString()</span></p>
+            <p>Lugar de nacimiento: <span>@Model.LugarNacimiento</span></p>
+        </div>
+    </div>
+
+    <p id="biografia">
+        @Model.Biografia
+    </p>
+</div>
+

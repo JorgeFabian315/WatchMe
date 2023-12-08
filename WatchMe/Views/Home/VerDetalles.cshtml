@@ -1,37 +1,37 @@
-﻿@model Pelicula
+﻿@model HomeDetallesPeliculaViewModel
 @{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 <div id="verpelicula">
-    <img asp-append-version src="~/Imagenes/Peliculas/@(Model.Id).jpg">
+    <img asp-append-version src="~/Imagenes/Peliculas/@(Model.Pelicula.Id).jpg">
     <div id="informacion">
-        <h2>@Model.Titulo</h2>
-        <p id="clasificacion">@Model.Clasificacion.Nombre</p>
-        <p id="genero">@Model.IdGeneroNavigation.Nombre</p>
+        <h2>@Model.Pelicula.Titulo</h2>
+        <p id="clasificacion">@Model.Pelicula.Clasificacion.Nombre</p>
+        <p id="genero">@Model.Pelicula.IdGeneroNavigation.Nombre</p>
         <div id="fecha">
             <img src="~/fecha.png">
-            <p>@Model.FechaLanzamiento.ToShortDateString()</p>
+            <p>@Model.Pelicula.FechaLanzamiento.ToShortDateString()</p>
         </div>
 
         <div id="duracion">
             <img src="~/duracion.png">
-            <p>@Model.Duracion min</p>
+            <p>@Model.Pelicula.Duracion min</p>
         </div>
 
         <div id="calificacion">
             <img src="~/estrella.png">
-            <p>@Model.CalificacionPromedio %</p>
+            <p>@Model.Pelicula.CalificacionPromedio %</p>
         </div>
         <p id="sinopsis">
-            @Model.Sinopsis
+            @Model.Pelicula.Sinopsis
         </p>
     </div>
 </div>
 
 <div id="datosadicionales">
     <div id="datos">
-        <p id="director">Director:&nbsp;  <span>@Model.Director</span>
-        <p id="plataformas">Plataforma:&nbsp; <span>@Model.Plataforma.Nombre</span></p>
+        <p id="director">Director:&nbsp;  <span>@Model.Pelicula.Director</span>
+        <p id="plataformas">Plataforma:&nbsp; <span>@Model.Pelicula.Plataforma.Nombre</span></p>
     </div>
     <div id="trailer">
         <img src="~/youtube.png">
@@ -39,7 +39,7 @@
             <h3>YouTube</h3>
             <p>Mira el trailer aqui</p>
         </div>
-        <a href="@Model.UrlTrailer" target="_blank">
+        <a href="@Model.Pelicula.UrlTrailer" target="_blank">
             <input type="button" value="Mirar trailer" />
         </a>
     </div>
@@ -48,12 +48,12 @@
 <h4 id="reparto"> Reparto Principal</h4>
 <div id="listadoactores">
 
-    @foreach (var a in Model.Participacion)
+    @foreach (var a in Model.Pelicula.Participacion)
     {
         <div class="actor">
             <img src="~/Imagenes/Actores/@(a.IdActorNavigation.Id).jpg">
             <div class="papel">
-                <a href="veractor.html" class="nombre">@a.IdActorNavigation.Nombre</a>
+                <a href="~/VerActor/@a.IdActorNavigation.Nombre.Replace(" ", "-")" class="nombre">@a.IdActorNavigation.Nombre</a>
                 <p class="personaje">@a.Personaje</p>
             </div>
         </div>
@@ -61,16 +61,29 @@
 
 </div>
 
-<div id="tituloreseña">
-    <h3>Reseñas</h3>
-    <a href="~/Reseñas/Agregar/@Model.Titulo.Replace(" ", "-")">
-        <input type="button" value="Realizar reseña" href />
-    </a>
-</div>
+@if (User.IsInRole("Critico"))
+{
+    <div id="tituloreseña">
+        <h3>Reseñas</h3>
+        @if(Model.TieneReseña == true)
+        {
+            <a href="~/Reseñas/Agregar/@Model.Pelicula.Titulo.Replace(" ", "-")">
+                <input type="button" value="Ver mi reseña" href />
+            </a>
+        }
+        else
+        {
+            <a href="~/Reseñas/Agregar/@Model.Pelicula.Titulo.Replace(" ", "-")">
+                <input type="button" value="Realizar reseña" href />
+            </a>
+        }
+
+    </div>
+}
 
 <div id="listareseñas">
 
-    @foreach (var r in Model.Reseña)
+    @foreach (var r in Model.Pelicula.Reseña)
     {
     <div class="reseña">
         <div class="principal">

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WatchMe.Areas.Admin.Models.ViewModels.Peliculas;
 using WatchMe.Models.Entities;
@@ -7,6 +8,7 @@ using WatchMe.Repositories;
 namespace WatchMe.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Administrador")]
     public class PeliculasController : Controller
     {
         private readonly Repository<Genero> repositoryGeneros;

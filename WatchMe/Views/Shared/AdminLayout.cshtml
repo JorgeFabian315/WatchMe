@@ -32,7 +32,7 @@
                 <i class='bx bxs-user'></i>
                 <span>Administrar actores</span>
             </a>
-            <a href="IndexPeliculas.html" class="enlace cerrarsesion">
+            <a href="~/Home/LogOut" class="enlace cerrarsesion">
                 <i class='bx bxs-log-out'></i>
                 <span>Cerrar sesión</span>
             </a>
@@ -41,7 +41,7 @@
     <main style="background-color:#F2F4F9;">
         <div class="row col-md-12 col-lg-12 col-x-12 p-0 m-0 headerAdmin" style="background-color:#ffff;">
             <div class="InfoAdmin">
-                <p><span>Juanito Rodriguez </span><br />Administrador</p>
+                <p><span>@User.Identity?.Name</span><br />Administrador</p>
                 <img class="imgUsuario" src="~/Imagenes/Actores/0.jpg" />
             </div>
         </div>

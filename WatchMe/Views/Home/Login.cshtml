@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model HomeLoginViewModel
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,23 +16,21 @@
                 <h3>Bienvenido a</h3>
                 <h2>Watch<span>Me</span></h2>
                 <p>El mejor sitio para averiguar acerca del estreno de tus peliculas favoritas.</p>
+              <form action="~/Home/Login" method="post">
+                    <div class="correo">
+                        <img>
+                        <input type="text" placeholder="Correo electrónico" asp-for="CorreoElectronico">
+                    </div>
 
-                <div class="correo">
-                    <img>
-                    <input type="text" placeholder="Correo electrónico">
-                </div>
-
-                <div class="contraseña">
-                    <img>
-                    <input type="password" placeholder="Contraseña">
-                </div>
-                <p class="errores"></p>
-                <div class="iniciarsesionboton">
-                    <input type="submit" value="Iniciar sesión">
-                </div>
-
-
-
+                    <div class="contraseña">
+                        <img>
+                        <input type="password" placeholder="Contraseña" asp-for="Contraseña">
+                    </div>
+                    <p class="errores">@Html.ValidationSummary(true)</p>
+                    <div class="iniciarsesionboton">
+                        <input type="submit" value="Iniciar sesión">
+                    </div>
+              </form>
             </div>
 
             <div class="derecha">

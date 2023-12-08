@@ -10,6 +10,7 @@ builder.Services.AddMvc();
 
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Genero>>();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Plataforma>>();
+builder.Services.AddTransient<WatchMe.Repositories.Repository<Usuario>>();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Clasificacion>>();
 builder.Services.AddTransient<WatchMe.Repositories.Repository<Reseña>>();
 builder.Services.AddTransient<ReseñaRepositorio>();
@@ -19,13 +20,13 @@ builder.Services.AddTransient<PeliculasRepository>();
 
 builder.Services.AddDbContext<WatchMeContext>(
    optionsBuilder =>
-   optionsBuilder.UseMySql("database=WatchMe;user=root;server=localhost;password=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.34-mysql")));
+   optionsBuilder.UseMySql("database=websitos_WatchMe;user=websitos_AdminWatchMe;server=websitos256.com;password=WatchMe2023", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.34-mysql")));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(x =>
     {
         x.AccessDeniedPath = "/Home/Denied";
-        x.LoginPath = "/Home/Login";
+        x.LoginPath = "/Login";
         x.LogoutPath = "/Home/Logout";
         x.ExpireTimeSpan = TimeSpan.FromMinutes(30);
         x.Cookie.Name = "FruteriaCookie";

@@ -30,6 +30,7 @@ public partial class WatchMeContext : DbContext
     public virtual DbSet<Reseña> Reseña { get; set; }
 
     public virtual DbSet<Usuario> Usuario { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -183,7 +184,7 @@ public partial class WatchMeContext : DbContext
 
             entity.HasIndex(e => e.CorreoElectronico, "CorreoElectronico_UNIQUE").IsUnique();
 
-            entity.Property(e => e.Contrsena)
+            entity.Property(e => e.Contrasena)
                 .HasMaxLength(128)
                 .IsFixedLength();
             entity.Property(e => e.CorreoElectronico).HasMaxLength(80);

@@ -1,4 +1,5 @@
 ﻿@inject Repository<Genero> generos
+@inject Repository<Plataforma> plataformas
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +35,26 @@
                         }
                     </ul>
                 </li>
-                <li><a href="~/Home/Login">Iniciar Sesión</a></li>
+                <li class="generos">
+                    Plataformas &#11167;
+                    <ul class="sublistadogeneros">
+                        @foreach (var g in plataformas.GetAll())
+                        {
+                            <li><a href="~/Plataforma/@g.Nombre.Replace(" ", "-")">@g.Nombre</a></li>
+                        }
+                    </ul>
+                </li>
+                @if (User.IsInRole("Critico"))
+                {
+                    <li id="cerrarsesion">
+                        <span> @User.Identity?.Name</span>
+                        <br><a href="~/Home/LogOut">Cerrar Sesión</a>
+                    </li>
+                }
+                else
+                {
+                <li id="cerrarsesion"><a href="~/Login" class="botonIniciarSesion">Iniciar Sesión</a></li>
+                }
             </ul>
         </div>
     </nav>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WatchMe.Areas.Admin.Models.ViewModels.Actores;
 using WatchMe.Models.Entities;
 using WatchMe.Repositories;
@@ -7,6 +8,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace WatchMe.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Administrador")]
     public class ActoresController : Controller
     {
         private readonly ActoresRepository repositoryActores;

@@ -22,18 +22,18 @@ body {
     position: relative;
     padding-bottom: 100px;
     min-height: 100vh;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
     body::-webkit-scrollbar {
         width: 15px;
-        margin-right:10px;
+        margin-right: 10px;
     }
 
     body::-webkit-scrollbar-thumb {
         background-color: #DBF815;
-        border-radius:10px;
-        transition:all 1s ease;
+        border-radius: 10px;
+        transition: all 1s ease;
     }
 
 
@@ -102,8 +102,6 @@ body {
 }
 
 
-
-
 nav {
     width: 100%;
     display: flex;
@@ -132,6 +130,9 @@ nav {
         color: #fff;
         text-decoration: none;
         transition: 0.4s;
+        width: 100%;
+        display: block;
+        height: 100%;
     }
 
 
@@ -159,16 +160,14 @@ nav {
         outline: none;
     }
 
-        #barrabusqueda input::placeholder {
-            color: #ffff;
-        }
+
 
 .menuhorizontal {
     display: flex;
     align-items: center;
 }
 
-li {
+.menuhorizontal li {
     list-style: none;
     cursor: pointer;
     padding: 1.5vw;
@@ -176,7 +175,7 @@ li {
     transition: all .3s ease 0s;
 }
 
-    li:hover {
+    .menuhorizontal li:hover {
         color: #E70010;
     }
 
@@ -189,21 +188,31 @@ li {
 }
 
     .sublistadogeneros > li {
-        width: 190px;
+        width: 100%;
         transform: translateX(-20px);
         text-align: center;
+        padding: 0;
         background-color: rgba(9, 18, 30, 0.8);
         color: white;
+        box-sizing: border-box;
     }
 
-        .sublistadogeneros > li:hover {
-            background-color: #E70010;
-            color: white;
-        }
+    .sublistadogeneros li a {
+        width: 100%;
+        display: block;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .sublistadogeneros > li:hover {
+        background-color: #E70010;
+        color: white;
+    }
 
 .generos:hover > .sublistadogeneros {
     display: block;
 }
+
 
 
 
@@ -865,7 +874,7 @@ footer span {
         text-align: center;
     }
 
-    /*LOGIN*/
+/*LOGIN*/
 .izquierda {
     padding: 20px 0px 50px 0px;
     text-align: center;
@@ -982,3 +991,74 @@ footer span {
     .derecha p {
         font-size: 15px;
     }
+
+
+.botonIniciarSesion {
+    background-color: #E70010;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: padding 0.3s ease;
+}
+
+
+.imagenUsuario {
+    background-color: lightgray;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    position:relative;
+}
+
+    .imagenUsuario span {
+        color: red;
+        position:absolute;
+        top:50%;
+        font-size:1.2rem;
+        transform:translateY(-50%);
+        vertical-align: middle;
+    }
+.ventanadeacceso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.accesodenegado {
+    margin: 20px auto;
+    color: white;
+    background-color: #184463;
+    padding: 25px;
+    border-radius: 20px;
+    width: 65%;
+    max-width: 800px;
+    text-align: center;
+}
+
+    .accesodenegado h3 {
+        font-size: 50px;
+        color: white;
+        font-family: Titulos;
+    }
+
+@media screen and (max-width:1050px) {
+    .menuhorizontal {
+        font-size: 0.8rem;
+    }
+
+    #barrabusqueda {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    #barrabusqueda {
+        width: 200px;
+    }
+
+    .destacada h2 {
+        font-size: 1.5rem;
+    }
+}
