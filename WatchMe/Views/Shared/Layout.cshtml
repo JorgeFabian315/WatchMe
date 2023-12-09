@@ -10,11 +10,13 @@
     <title>WatchMe</title>
     <link rel="stylesheet" href="~/css/style.css">
     <link href="~/css/fontawesome-free-6.4.2-web/css/all.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
 
-    <nav>
+    <nav class="navmenu">
         <a href="~/">
             <img src="~/Logo.png">
         </a>
@@ -24,6 +26,13 @@
                 <img src="~/lupa.png">
             </a>
         </div>
+        
+        <input type="checkbox" id="check" />
+        <label class="menuicono" for="check">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+        </label>
+
         <div class="navbar">
             <ul class="menuhorizontal">
                 <li class="generos">
@@ -35,7 +44,7 @@
                         }
                     </ul>
                 </li>
-                <li class="generos">
+                <li class="generos"> @* plata *@
                     Plataformas &#11167;
                     <ul class="sublistadogeneros">
                         @foreach (var g in plataformas.GetAll())

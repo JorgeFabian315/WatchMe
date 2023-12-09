@@ -82,7 +82,6 @@
             Array.from(tabla1.querySelectorAll("td:last-of-type")).forEach(
                 td => {
                     td.parentElement.hidden = true;
-                    td.textContent = null;
                 }
             );
             tabla1.paginate(5);
@@ -94,7 +93,6 @@
         td => {
 
             td.parentElement.hidden = true;
-            td.textContent = null;
         }
     );
 

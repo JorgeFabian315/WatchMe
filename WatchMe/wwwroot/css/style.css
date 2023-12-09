@@ -50,7 +50,7 @@ body {
     display: flex;
     background-color: #184463;
     border-radius: 10px;
-    height: 370px;
+    height: 380px;
     width: 70%;
     margin: 0px auto 40px auto;
     align-items: center;
@@ -1070,18 +1070,38 @@ footer span {
     color: white;
     font-size: 1.5rem;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
+/*navmenu*/
+.navmenu{
+    display:flex;
+    justify-content:space-between;
+}
 
-@media screen and (max-width:1050px) {
+.menuicono {
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.menuicono #close-icon{
+    display:none;
+}
+
+#check{
+    display:none;
+}
+
+@media screen and (max-width:1250px) {
     .menuhorizontal {
         font-size: 0.8rem;
     }
 
     #barrabusqueda {
-        width: 200px;
+        width: 300px;
     }
 }
 
@@ -1093,5 +1113,70 @@ footer span {
 
     .destacada h2 {
         font-size: 1.5rem;
+    }
+}
+
+
+#check:checked~ .menuicono #menu-icon {
+    display: none;
+}
+
+#check:checked ~ .menuicono #close-icon {
+    display: block;
+}
+
+
+@media screen and (max-width:960px) {
+    .menuicono {
+        display: inline-flex;
+    }
+
+    .navmenu {
+        position:relative;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        left: 0;
+        background-color: #184463;
+        height: 0;
+        overflow:hidden;
+        transition: all 0.3s ease;
+    }
+
+    #check:checked~.navbar {
+        height: 15rem;
+    }
+
+
+    .menuhorizontal {
+        display: flex;
+        justify-content: center;
+    }
+
+    .destacada {
+        display: flex;
+        height: 450px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+        .destacada img {
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        .destacada a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+    .navbar .menuhorizontal .generos {
+        display: block;
     }
 }
