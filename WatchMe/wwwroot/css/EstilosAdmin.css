@@ -199,6 +199,15 @@ table td{
     margin-right:15px;
 }
 
+.table tfoot a {
+    margin-right: 10px;
+    padding: 2px 8px;
+    text-decoration: none;
+    color: aliceblue;
+    border-radius: 3px;
+    background-color: #2A384F;
+}
+
 @media screen and (max-width:900px) {
     .menu-dashboard {
         width: 100px;

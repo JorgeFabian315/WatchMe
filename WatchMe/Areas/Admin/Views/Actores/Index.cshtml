@@ -56,6 +56,27 @@
     const tabla1 = document.querySelector("#tabla1");
     document.querySelector("#Buscador").addEventListener("input", function () {
         tabla1.filter(this.value);
+
+        if (this.value === "") {
+            Array.from(tabla1.querySelectorAll("td:last-of-type")).forEach(
+                td => {
+                    td.parentElement.hidden = true;
+                    td.textContent = null;
+                }
+            );
+            tabla1.paginate(5);
+        }
+
     });
+
+    Array.from(tabla1.querySelectorAll("td:last-of-type")).forEach(
+        td => {
+
+            td.parentElement.hidden = true;
+            td.textContent = null;
+        }
+    );
+
+    tabla1.paginate(5);
 </script>
 

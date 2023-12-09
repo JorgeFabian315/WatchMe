@@ -135,10 +135,6 @@ nav {
         height: 100%;
     }
 
-.navbar ul li a:hover{
-    color: #E70010;
-}
-
 #barrabusqueda {
     background-color: #184463;
     display: flex;
@@ -170,15 +166,15 @@ nav {
     align-items: center;
 }
 
-.menuhorizontal li {
-    list-style: none;
-    cursor: pointer;
-    padding: 1.5vw;
-    color: white;
-    transition: all .3s ease 0s;
-}
+    .menuhorizontal li {
+        list-style: none;
+        cursor: pointer;
+        padding: 1.5vw;
+        color: white;
+        transition: all .3s ease 0s;
+    }
 
-    .menuhorizontal li:hover {
+    .menuhorizontal .generos:hover {
         color: #E70010;
     }
 
@@ -378,7 +374,7 @@ footer span {
     margin: 10px 20px 30px 20px;
     color: white;
     font-size: 30px;
-margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 
@@ -389,7 +385,6 @@ margin-bottom: 30px;
     margin: 0px 20px 0px 20px;
     color: white;
     display: flex;
-  
 }
 
     #verpelicula h2 {
@@ -767,7 +762,6 @@ margin-bottom: 30px;
     border-radius: 20px;
     width: 65%;
     max-width: 800px;
-  
 }
 
 #partesuperior {
@@ -881,6 +875,10 @@ margin-bottom: 30px;
     }
 
 /*LOGIN*/
+#mainlogin {
+    background-image: url(background.jpg);
+}
+
 .izquierda {
     padding: 20px 0px 50px 0px;
     text-align: center;
@@ -890,6 +888,7 @@ margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 }
 
     .izquierda h3 {
@@ -957,11 +956,12 @@ margin-bottom: 30px;
 }
 
 .login {
-    padding: 50px;
+    padding: 100px;
     color: white;
     display: flex;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .errores {
@@ -1013,17 +1013,18 @@ margin-bottom: 30px;
     height: 50px;
     border-radius: 50%;
     text-align: center;
-    position:relative;
+    position: relative;
 }
 
     .imagenUsuario span {
         color: red;
-        position:absolute;
-        top:50%;
-        font-size:1.2rem;
-        transform:translateY(-50%);
+        position: absolute;
+        top: 50%;
+        font-size: 1.2rem;
+        transform: translateY(-50%);
         vertical-align: middle;
     }
+
 .ventanadeacceso {
     display: flex;
     align-items: center;
@@ -1047,6 +1048,32 @@ margin-bottom: 30px;
         color: white;
         font-family: Titulos;
     }
+
+
+#tabla1 tfoot a {
+    margin-right: 10px;
+    padding: 2px 8px;
+    text-decoration: none;
+    color: aliceblue;
+    border-radius: 3px;
+    background-color: cadetblue;
+}
+
+.regresarLogin {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #E70010;
+    padding: 3px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
 
 @media screen and (max-width:1050px) {
     .menuhorizontal {
