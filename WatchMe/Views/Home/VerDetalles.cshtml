@@ -51,7 +51,7 @@
     @foreach (var a in Model.Pelicula.Participacion)
     {
         <div class="actor">
-            <img src="~/Imagenes/Actores/@(a.IdActorNavigation.Id).jpg">
+            <img asp-append-version src="~/Imagenes/Actores/@(a.IdActorNavigation.Id).jpg">
             <div class="papel">
                 <a href="~/VerActor/@a.IdActorNavigation.Nombre.Replace(" ", "-")" class="nombre">@a.IdActorNavigation.Nombre</a>
                 <p class="personaje">@a.Personaje</p>
