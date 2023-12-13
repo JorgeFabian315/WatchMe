@@ -12,6 +12,7 @@
         <input type="hidden" asp-for="Reseña.IdUsuario"/>
         <input type="hidden" asp-for="Titulo"/>
         <h4>Calificación:</h4>
+
         <div class="estrellas">
             @for (int i = 1; i <= 10; i++)
             {
@@ -21,8 +22,8 @@
             }
 
         </div>
-        <textarea rows="5" placeholder="Escriba su opinión" asp-for="Reseña.Comentario"></textarea>
-        <p>  @Html.ValidationSummary(true)</p>
+        <textarea rows="5" style="margin-bottom:20px" placeholder="Escriba su opinión" asp-for="Reseña.Comentario"></textarea>
+        <p class="erroresp">@Html.ValidationSummary(true)</p>
         
         <div class="botones">
             <input type="submit"

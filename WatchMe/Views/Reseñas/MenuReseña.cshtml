@@ -3,7 +3,9 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<div class="reseñarealizada">
+<div class="reseñarealizada" style="position:relative;">
+    <a href="javascript:history.back();" class="regresarLogin" style="right:50px; top:5px; width:30px; left:95%;"><i class='bx bx-x'></i></a>
+
     <h3>
         Su reseña de:
         <span>"@Model.IdPeliculaNavigation.Titulo"</span>

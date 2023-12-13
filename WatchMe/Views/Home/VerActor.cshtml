@@ -2,8 +2,9 @@
 @{
     Layout = "Layout";
 }
-<div id="actor">
-    <div id="partesuperior">
+<div id="actor" style="position:relative">
+    <a href="javascript:history.back();" class="regresarLogin" style="right:50px; top:5px; width:30px; left:95%;"><i class='bx bx-x'></i></a>
+    <div id="partesuperior" >
         <img src="~/Imagenes/Actores/@(Model.Id).jpg">
         <div id="datosprincipales">
             <h2>@Model.Nombre</h2>

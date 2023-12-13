@@ -1094,6 +1094,19 @@ footer span {
 #check{
     display:none;
 }
+#username{
+    color:#DBF815;
+}
+
+#cerrarsesion:hover{
+    color:#E70010;
+}
+
+ ul li {
+    color: #DBF815;
+    font-size:1rem;
+}
+
 
 @media screen and (max-width:1250px) {
     .menuhorizontal {
@@ -1105,16 +1118,6 @@ footer span {
     }
 }
 
-@media screen and (max-width:800px) {
-
-    #barrabusqueda {
-        width: 200px;
-    }
-
-    .destacada h2 {
-        font-size: 1.5rem;
-    }
-}
 
 
 #check:checked~ .menuicono #menu-icon {
@@ -1126,11 +1129,18 @@ footer span {
 }
 
 
-@media screen and (max-width:960px) {
+@media screen and (max-width:800px) {
     .menuicono {
         display: inline-flex;
     }
 
+    #barrabusqueda {
+        width: 200px;
+    }
+
+    .destacada h2 {
+        font-size: 1.5rem;
+    }
     .navmenu {
         position:relative;
     }
@@ -1147,7 +1157,7 @@ footer span {
     }
 
     #check:checked~.navbar {
-        height: 15rem;
+        height: 10rem;
     }
 
 
@@ -1176,7 +1186,5 @@ footer span {
             padding: 0;
             margin: 0;
         }
-    .navbar .menuhorizontal .generos {
-        display: block;
-    }
+     
 }

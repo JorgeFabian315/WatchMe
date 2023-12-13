@@ -1,5 +1,6 @@
 ﻿@inject Repository<Genero> generos
 @inject Repository<Plataforma> plataformas
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,11 +54,11 @@
                         }
                     </ul>
                 </li>
-                @if (User.IsInRole("Critico"))
+                @if (User.Identity.IsAuthenticated)
                 {
                     <li id="cerrarsesion">
-                        <span> @User.Identity?.Name</span>
-                        <br><a href="~/Home/LogOut">Cerrar Sesión</a>
+                        <span id="username">@User.Identity.Name</span>
+                        <br><a id="cerrarsesion" href="~/Home/LogOut">Cerrar Sesión</a>
                     </li>
                 }
                 else
